@@ -1,8 +1,6 @@
 from llm_helper import llm
 from few_shorts import FewShorts
 
-few_shorts = FewShorts()
-
 
 def get_length(length):
     if length == "Short":
@@ -15,7 +13,7 @@ def get_length(length):
     return "10 to 15 lines"
 
 
-def get_prompt(length, language, tag):
+def get_prompt(length, language, tag, few_shorts):
 
     length_str = get_length(length)
 
@@ -44,15 +42,15 @@ Generate a LinkedIn post with the following requirements. No preamble.
 
         prompt += "\nHere are similar examples:\n"
 
-        for i, post in enumerate(examples[:3]):
+        for i, post in enumerate(examples[:1]):
             prompt += f"\nExample {i+1}:\n{post['text']}\n"
 
     return prompt
 
 
-def generate_post(length, language, tag):
+def generate_post(length, language, tag, few_shorts):
 
-    prompt = get_prompt(length, language, tag)
+    prompt = get_prompt(length, language, tag, few_shorts)
 
     print(prompt)   # debugging
 

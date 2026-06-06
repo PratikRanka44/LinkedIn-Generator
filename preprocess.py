@@ -8,10 +8,11 @@ from langchain_core.exceptions import OutputParserException
 
 llm = ChatGroq(api_key = os.getenv("GROQ_API_KEY"), model_name ="openai/gpt-oss-120b")
 
-final_data = []
+
 def process_posts(
     raw_file_path,
     processed_file_path=r"LinkedIn\Data\processed_posts.json"):
+    final_data = []
     with open(raw_file_path, encoding='utf-8') as file:
         posts = json.load(file)
         for post in posts:
